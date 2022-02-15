@@ -39,7 +39,7 @@ def check_missing_char(text_in: str) -> List[str]:
 
 
 def text_to_math_bracket(key_word: str, translated_text_list: List[str]):
-    # merging words like: 'otwórz' 'nawias' together in one word: 'otwórz nawias'
+    # merging words like: 'otwórz' 'nawias' together in one word: 'otwórz nawias' (open brackets)
     indexes_word = [i for i, x in enumerate(translated_text_list) if x == key_word]  # indexes for all word: 'nawias'
 
     # finding all words to delete
@@ -50,7 +50,7 @@ def text_to_math_bracket(key_word: str, translated_text_list: List[str]):
         words_to_delete.append(translated_text_list[i + it - 1])
         it += 1
 
-    # merging together words 'otwórz'/'zamknij' 'nawias' in one word: 'otwórz/zamknij nawias'
+    # merging together words 'otwórz'/'zamknij' 'nawias' in one word: 'otwórz/zamknij nawias' (open/close brackets)
     for _, word in enumerate(words_to_delete):
         translated_text_list = list(filter(lambda a: a != word, translated_text_list))
 
